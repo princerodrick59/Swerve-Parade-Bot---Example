@@ -7,14 +7,15 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.SirenConstants;
 
-public class Siren extends SubsystemBase {
+public class SirenSubsystem extends SubsystemBase {
 
   private WPI_TalonSRX sirenMotor;//TODO:Change based on motor
 
   /** Creates a new Siren. */
-  public Siren() {
-    sirenMotor = new WPI_TalonSRX(6);//TODO:change to constants
+  public SirenSubsystem() {
+    sirenMotor = new WPI_TalonSRX(SirenConstants.sirenMotorID);//TODO:CAN ID will change
   }
 
   @Override
@@ -23,12 +24,12 @@ public class Siren extends SubsystemBase {
   }
 
   public void sirenOn() {
-    sirenMotor.configOpenloopRamp(3);//TODO:change to constants
-    sirenMotor.setVoltage(9);//TODO:change to constants
+    sirenMotor.configOpenloopRamp(SirenConstants.sirenRampRate);
+    sirenMotor.setVoltage(SirenConstants.sirenOnVoltage);
   }
 
   public void sirenOff() {
-    sirenMotor.configOpenloopRamp(3);
-    sirenMotor.setVoltage(0);
+    sirenMotor.configOpenloopRamp(SirenConstants.sirenRampRate);
+    sirenMotor.setVoltage(SirenConstants.sirenOffVoltage);
   }
 }

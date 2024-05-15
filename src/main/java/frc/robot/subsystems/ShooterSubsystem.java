@@ -10,14 +10,15 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.ShooterConstants;
 
-public class ShooterSolenoid extends SubsystemBase {
+public class ShooterSubsystem extends SubsystemBase {
   
   private WPI_TalonSRX shooterSolenoid;
 
   /** Creates a new ShooterSolenoid. */
-  public ShooterSolenoid() {
-    shooterSolenoid = new WPI_TalonSRX(5);//TODO:change to constants
+  public ShooterSubsystem() {
+    shooterSolenoid = new WPI_TalonSRX(ShooterConstants.shooterSolenoidID);//TODO:CAN ID will change
   }
 
   @Override
@@ -26,10 +27,10 @@ public class ShooterSolenoid extends SubsystemBase {
   }
 
   public void solenoidOpen() {
-    shooterSolenoid.setVoltage(12);
+    shooterSolenoid.setVoltage(ShooterConstants.shooterSolenoidOpenVoltage);
   }
 
   public void solenoidClose() {
-    shooterSolenoid.setVoltage(0);
+    shooterSolenoid.setVoltage(ShooterConstants.shooterSolenoidClosedVoltage);
   }
 }

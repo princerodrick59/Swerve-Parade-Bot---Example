@@ -8,17 +8,19 @@ import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
+import frc.robot.Constants.BufferTankConstants;
 
-public class BufferTankSolenoid extends SubsystemBase {
+public class BufferTankSubsystem extends SubsystemBase {
 
   public static Solenoid bufferTankSolenoid;
   public double psi; 
   public AnalogInput pressureSensor;
   
   /** Creates a new bufferTankSolenoid. */
-  public BufferTankSolenoid() {
-    bufferTankSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, 0);
-    pressureSensor = new AnalogInput(3);//TODO:Change to constants
+  public BufferTankSubsystem() {
+    bufferTankSolenoid = new Solenoid(PneumaticsModuleType.CTREPCM, BufferTankConstants.bufferTankSolenoidChannel);
+    pressureSensor = new AnalogInput(BufferTankConstants.pressureSensorChannel);
   }
 
   @Override

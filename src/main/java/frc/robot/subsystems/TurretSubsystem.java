@@ -7,14 +7,15 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.hardware.TalonFX;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.TurretConstants;
 
-public class Turret extends SubsystemBase {
+public class TurretSubsystem extends SubsystemBase {
 
   private TalonFX turretMotor;
 
   /** Creates a new Turret. */
-  public Turret() {
-    turretMotor = new TalonFX(9);//TODO:change to constants
+  public TurretSubsystem() {
+    turretMotor = new TalonFX(TurretConstants.turretMotorID);//TODO:CAN ID will change
   }
 
   @Override
@@ -23,15 +24,15 @@ public class Turret extends SubsystemBase {
   }
   
   public void turretLeft() {
-    turretMotor.set(0.25);//TODO:change to constants
+    turretMotor.set(TurretConstants.turretSpeed);
   }
 
   public void turretRight() {
-    turretMotor.set(-0.25);//TODO:change to constants make it negative in subsystem not constants
+    turretMotor.set(-TurretConstants.turretSpeed);
   }
 
   public void turretStop() {
-    turretMotor.set(0);//TODO:change to constants
+    turretMotor.set(TurretConstants.turretStop);
   }
 
   public void turretSpeed(double speed) {
